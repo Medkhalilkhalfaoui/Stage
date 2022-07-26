@@ -1,0 +1,109 @@
+{
+  "0":[
+    {
+      "type": "edittext",
+      "name": "cin"
+    },
+    {
+      "type": "edittext",
+      "name": "nom"
+
+    },
+    {
+      "type": "edittext",
+      "name": "prenom"
+    },
+    {
+      "type": "edittext",
+      "name": "Email"
+    },
+    {
+      "type": "Calendar",
+      "name": "calendar"
+
+    },
+    {
+      "type": "Time",
+      "name": "Time"
+
+    },
+
+
+    {
+      "type": "dropdown",
+      "name": "Date",
+      "Dates": [
+        "22-07-2022",
+        "23-07-2022",
+        "24-07-2022",
+        "25-07-2022"
+      ],
+      "initialval": "Select Date ",
+      "required" : "yes"
+    },
+    {
+      "type": "heure",
+      "name": "Time",
+      "initialval": "Select Time",
+      "Heures": {
+        "22-07-2022": [
+          "10:00",
+          "10:30",
+          "11:00",
+          "11:30"
+        ],
+        "23-07-2022": [
+          "14:00",
+          "15:00",
+          "17:00"
+        ],
+        "24-07-2022": [],
+        "25-07-2022": [
+          "11:00"
+        ],
+        "": [
+        ]
+      }
+    },
+    {
+      "type": "GroupRadio",
+      "name": "Meeting location",
+      "sites": [
+        "office 1",
+        "office 2"
+
+      ],
+      "selected": "office 1"
+    },
+    {
+      "type": "Switch",
+      "text": "Are you agree with us or no ?"
+
+    },
+    {
+      "type": "Importation",
+      "name": "upload your resume",
+      "typeimport": "img"
+
+
+
+    }
+
+
+  ],
+  "1": [
+    {
+      "type": "Switch",
+      "text": "Are you agree with us or no ?"
+
+    },
+    {
+      "type": "Importation",
+      "name": "upload your resume",
+      "typeimport": "img"
+
+
+
+    }
+  ]
+}
