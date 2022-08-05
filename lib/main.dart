@@ -20,7 +20,10 @@ final Controller c = Get.put(Controller());
 Future<void> readJson() async {
   final String response = await rootBundle.loadString('assets/data.json');
   final data = await json.decode(response);
+
   c.items.value = data[c.indexdata.value.toString()];
+
+  c.data.value = data;
 }
 
 class MyApp extends StatelessWidget {

@@ -1,34 +1,110 @@
 {
-  "0":[
+  "0": [
+
     {
       "type": "edittext",
-      "name": "cin"
+      "name": "Nom",
+      "required": "yes",
+      "id": "0"
     },
     {
       "type": "edittext",
-      "name": "nom"
+      "name": "Prenom",
+      "required": "yes",
+      "id": "1"
 
     },
     {
       "type": "edittext",
-      "name": "prenom"
+      "name": "Cin",
+      "required": "yes",
+      "formater": "digitsonly",
+      "valid": "CIN",
+      "keybord": "number",
+      "id": "2"
     },
     {
       "type": "edittext",
-      "name": "Email"
+      "name": "Email",
+      "valid": "Email",
+      "keybord": "Email",
+      "id": "3"
     },
     {
       "type": "Calendar",
-      "name": "calendar"
+      "name": "calendar",
+      "ignore":  [
+        "22-08-2022",
+        "23-08-2022",
+        "24-08-2022",
+        "25-08-2022",
+        "04-08-2022"
+      ]
+    },
 
+    {
+      "type": ""
+    }
+  ],
+  "1": [
+    {
+      "type": "edittext",
+      "name": "Nom",
+      "required": "yes",
+      "id": "0"
+
+    },
+    {
+      "type": "edittext",
+      "name": "Prenom",
+      "required": "yes",
+      "id": "1"
+
+    },
+    {
+      "type": "Calendar",
+      "name": "calendar",
+      "ignore":  [
+        "22-08-2022",
+        "23-08-2022",
+        "24-08-2022",
+        "25-08-2022"
+      ]
     },
     {
       "type": "Time",
       "name": "Time"
+    },
+    {
+      "type": ""
+    }
 
+  ],
+  "2": [
+    {
+      "type": "Switch",
+      "text": "Are you agree with us or no ?"
+    },
+    {
+      "type": "Importation",
+      "name": "upload your resume",
+      "typeimport": "img"
+    },
+    {
+      "type": "GroupRadio",
+      "name": "Meeting location",
+      "sites": [
+        "office 1",
+        "office 2"
+      ],
+      "selected": "office 1"
     },
 
-
+    {
+      "type": ""
+    }
+  ],
+  "3": [
     {
       "type": "dropdown",
       "name": "Date",
@@ -39,7 +115,7 @@
         "25-07-2022"
       ],
       "initialval": "Select Date ",
-      "required" : "yes"
+      "required": "yes"
     },
     {
       "type": "heure",
@@ -66,44 +142,7 @@
       }
     },
     {
-      "type": "GroupRadio",
-      "name": "Meeting location",
-      "sites": [
-        "office 1",
-        "office 2"
-
-      ],
-      "selected": "office 1"
-    },
-    {
-      "type": "Switch",
-      "text": "Are you agree with us or no ?"
-
-    },
-    {
-      "type": "Importation",
-      "name": "upload your resume",
-      "typeimport": "img"
-
-
-
-    }
-
-
-  ],
-  "1": [
-    {
-      "type": "Switch",
-      "text": "Are you agree with us or no ?"
-
-    },
-    {
-      "type": "Importation",
-      "name": "upload your resume",
-      "typeimport": "img"
-
-
-
+      "type": ""
     }
   ]
 }

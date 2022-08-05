@@ -7,8 +7,9 @@ import 'package:intl/intl.dart';
 import '../theme/Theme.dart';
 
 class Calendar extends StatefulWidget {
-  const Calendar({Key? key,
+   Calendar({Key? key,
     required this.title,
+    this.ignore
 
 
 
@@ -17,6 +18,7 @@ class Calendar extends StatefulWidget {
       : super(key: key);
 
   final String title;
+  Function? ignore ;
 
 
 
@@ -80,7 +82,7 @@ class _InputFieldState extends State<Calendar> {
           Icons.calendar_today_outlined,
           color: Colors.grey,
         ),
-        onPressed: () => getDateFromUser(),
+        onPressed: () => getDateFromUser(widget.ignore),
       ),
               ],
             ),
@@ -92,13 +94,21 @@ class _InputFieldState extends State<Calendar> {
 
     );
   }
-  getDateFromUser() async {
+  getDateFromUser( x) async {
     DateTime? _pickedDate = await showDatePicker(
         context: context,
         initialDate: _selectedDate,
         firstDate: DateTime(
             DateTime.now().year, DateTime.now().month, DateTime.now().day),
-        lastDate: DateTime(2040));
+        lastDate: DateTime(2040),
+        selectableDayPredicate: x,
+        // selectableDayPredicate: (DateTime dateTime) {
+        //   if (dateTime == DateTime(2022, 8, 2) || dateTime == DateTime(2022, 8, 5) || dateTime == DateTime(2022, 8, 14) || dateTime == DateTime(2022, 8, 18) || dateTime == DateTime(2022, 8, 23) || dateTime == DateTime(2022, 8, 29))  {
+        //     return false;
+        //   }
+        //   return true;
+        // },
+    );
     if (_pickedDate != null) {
       setState(() {
         _selectedDate = _pickedDate;

@@ -7,9 +7,10 @@ class Controller extends GetxController{
   var  SelectedRadio = "".obs;
   var selectedtime = "".obs;
   var items = [].obs;
-  var cntr;
-  var inputrequired={}.obs;
+
   var indexdata = 0.obs;
+  var data = {}.obs;
+
 
 
   }

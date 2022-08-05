@@ -14,6 +14,7 @@ class InputField extends StatelessWidget {
     this.keybordtype,
     this.formatter,
     this.valid,
+    this.required,
 
 
   })
@@ -23,11 +24,10 @@ class InputField extends StatelessWidget {
   final String hint;
   final TextEditingController? controller;
   final Widget? widget;
-  final TextInputType? keybordtype;
-  final List<TextInputFormatter>? formatter;
-  final String? Function(String?)?  valid;
-
-
+  final String? keybordtype;
+  final String? formatter;
+  final String?  valid;
+  final String? required;
 
   @override
   Widget build(BuildContext context) {
@@ -56,11 +56,21 @@ class InputField extends StatelessWidget {
                   child: TextFormField(
                     controller: controller,
                     autofocus: false,
-                    keyboardType: keybordtype ,
-                    inputFormatters: formatter,
+                    keyboardType: keybordtype == "number"? TextInputType.number: keybordtype == "Email"?TextInputType.emailAddress:null,
+                    inputFormatters: [
+                     if(formatter == 'digitsonly') FilteringTextInputFormatter.digitsOnly
+
+                    ],
                     validator: Validators.compose([
-                      Validators.required('Field is required'),
-                      //Validators.email('Invalid email address'),
+                     if(required == "yes" )Validators.required('Field is required'),
+                      if(valid == "Email")Validators.email('Email Invalid'),
+                      if(valid == "CIN")Validators.compose([Validators.maxLength(8, 'CIN Invalid'),Validators.minLength(8, 'CIN Invalid')]),
+
+
+
+
+
+
                     ]) ,
                     readOnly: widget == null? false:true ,
                     cursorColor:  Colors.grey,
