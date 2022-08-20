@@ -30,6 +30,14 @@
       "keybord": "Email",
       "id": "3"
     },
+
+
+    {
+      "type": ""
+    }
+  ],
+  "1": [
+
     {
       "type": "Calendar",
       "name": "calendar",
@@ -42,35 +50,6 @@
       ]
     },
 
-    {
-      "type": ""
-    }
-  ],
-  "1": [
-    {
-      "type": "edittext",
-      "name": "Nom",
-      "required": "yes",
-      "id": "0"
-
-    },
-    {
-      "type": "edittext",
-      "name": "Prenom",
-      "required": "yes",
-      "id": "1"
-
-    },
-    {
-      "type": "Calendar",
-      "name": "calendar",
-      "ignore":  [
-        "22-08-2022",
-        "23-08-2022",
-        "24-08-2022",
-        "25-08-2022"
-      ]
-    },
     {
       "type": "Time",
       "name": "Time"
@@ -95,7 +74,9 @@
       "name": "Meeting location",
       "sites": [
         "office 1",
-        "office 2"
+        "office 2",
+        "office 3",
+        "office 4"
       ],
       "selected": "office 1"
     },
@@ -107,39 +88,53 @@
   "3": [
     {
       "type": "dropdown",
-      "name": "Date",
+      "name": "Pays",
       "Dates": [
-        "22-07-2022",
-        "23-07-2022",
-        "24-07-2022",
-        "25-07-2022"
+        "Tunisie",
+        "Algérie",
+        "France",
+        "Suisse"
       ],
-      "initialval": "Select Date ",
+      "initialval": "Select Pays",
       "required": "yes"
     },
     {
       "type": "heure",
-      "name": "Time",
-      "initialval": "Select Time",
+      "name": "Ville",
+      "initialval": "Select Ville",
       "Heures": {
-        "22-07-2022": [
-          "10:00",
-          "10:30",
-          "11:00",
-          "11:30"
+        "Tunisie": [
+          "Sousse",
+          "Tunis",
+          "Bizarte",
+          "Kairouan"
         ],
-        "23-07-2022": [
-          "14:00",
-          "15:00",
-          "17:00"
+        "Algérie": [
+          "Alger",
+          "Anaba",
+          "wahran"
         ],
-        "24-07-2022": [],
-        "25-07-2022": [
-          "11:00"
+        "France": [
+          "Nice",
+          "Lile",
+          "Paris",
+          "Marsielle"
         ],
-        "": [
-        ]
+        "Suisse": [
+          "Beme",
+          "Zurich",
+          "Bale"
+        ],
+        "": []
       }
+    },
+    {
+      "type": ""
+    }
+  ],
+  "4": [
+    {
+      "type": "Country-City"
     },
     {
       "type": ""

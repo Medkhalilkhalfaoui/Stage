@@ -97,7 +97,7 @@ class _DropdownState extends State<Dropdown> {
                       onChanged: (String? newval) {
                         setState(() {
                           widget.selectval = newval!;
-                          if (widget.title == "Date") {
+                          if (widget.title == "Pays") {
                             c.selectDate.value = widget.selectval;
                           }
                           if (widget.title == "Time") {
