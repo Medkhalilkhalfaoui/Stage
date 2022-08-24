@@ -7,8 +7,8 @@ import '../theme/Theme.dart';
 
 
 class GroupRadio extends StatefulWidget {
-   GroupRadio({Key? key, required this.selected,required this.title,required this.status}) : super(key: key);
-    String selected;
+   GroupRadio({Key? key, required this.title,required this.status}) : super(key: key);
+
     String title ;
     List status;
 
@@ -21,29 +21,35 @@ class _GroupRadioState extends State<GroupRadio> {
 
   @override
   Widget build(BuildContext context) {
-    return  Container(
-      margin: const EdgeInsets.only(left: 7,bottom: 10),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(widget.title,style: titleStyle,),
-          const SizedBox(height: 10,),
-          RadioGroup<String>.builder(
+    return  Card(
+      elevation: 3,
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Container(
+          margin: const EdgeInsets.only(left: 7,bottom: 10),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(widget.title,style: titleStyle,),
+              const SizedBox(height: 10,),
+              Obx(() => RadioGroup<String>.builder(
 
-            textStyle: subtitleStyle,
-            groupValue: widget.selected,
-            onChanged: (String? value) => setState(() {
-              widget.selected = value!;
-              c.SelectedRadio.value = widget.selected;
-              print( c.SelectedRadio.value);
-            }),
-            items: widget.status.map((e) => e.toString()).toList(),
-            itemBuilder: (item) => RadioButtonBuilder(
-              item,
-            ),
-            activeColor: Colors.grey,
+                textStyle: subtitleStyle,
+                groupValue: c.SelectedRadio.value,
+                onChanged: (String? value) => setState(() {
+                  //widget.selected = value!;
+                  c.SelectedRadio.value = value!;
+                  print( c.SelectedRadio.value);
+                }),
+                items: widget.status.map((e) => e.toString()).toList(),
+                itemBuilder: (item) => RadioButtonBuilder(
+                  item,
+                ),
+                activeColor: Colors.grey,
+              ),)
+            ],
           ),
-        ],
+        ),
       ),
     );
   }

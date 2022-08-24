@@ -1,37 +1,15 @@
 {
-  "0": [
-
+  "0":  [
     {
-      "type": "edittext",
-      "name": "Nom",
-      "required": "yes",
-      "id": "0"
+      "type": "c",
+      "Slot": "30",
+      "ignore": [
+         "22-08-2022-12","22-08-2022-16","22-08-2022-18", "22-08-2022-23",
+         "23-08-2022-8","23-08-2022-10","23-08-2022-11", "23-08-2022-23",
+         "24-08-2022-9","24-08-2022-12","24-08-2022-9", "24-08-2022-22",
+         "25-08-2022-12","25-08-2022-14","25-08-2022-18", "25-08-2022-23"
+        ]
     },
-    {
-      "type": "edittext",
-      "name": "Prenom",
-      "required": "yes",
-      "id": "1"
-
-    },
-    {
-      "type": "edittext",
-      "name": "Cin",
-      "required": "yes",
-      "formater": "digitsonly",
-      "valid": "CIN",
-      "keybord": "number",
-      "id": "2"
-    },
-    {
-      "type": "edittext",
-      "name": "Email",
-      "valid": "Email",
-      "keybord": "Email",
-      "id": "3"
-    },
-
-
     {
       "type": ""
     }
@@ -39,15 +17,9 @@
   "1": [
 
     {
-      "type": "Calendar",
-      "name": "calendar",
-      "ignore":  [
-        "22-08-2022",
-        "23-08-2022",
-        "24-08-2022",
-        "25-08-2022",
-        "04-08-2022"
-      ]
+      "type": "Birth",
+      "name": "Date of Birth"
+
     },
 
     {
@@ -136,6 +108,43 @@
     {
       "type": "Country-City"
     },
+    {
+      "type": ""
+    }
+  ],
+  "5" :[
+
+    {
+      "type": "edittext",
+      "name": "Nom",
+      "required": "yes",
+      "id": "0"
+    },
+    {
+      "type": "edittext",
+      "name": "Prenom",
+      "required": "yes",
+      "id": "1"
+
+    },
+    {
+      "type": "edittext",
+      "name": "Cin",
+      "required": "yes",
+      "formater": "digitsonly",
+      "valid": "CIN",
+      "keybord": "number",
+      "id": "2"
+    },
+    {
+      "type": "edittext",
+      "name": "Email",
+      "valid": "Email",
+      "keybord": "Email",
+      "id": "3"
+    },
+
+
     {
       "type": ""
     }

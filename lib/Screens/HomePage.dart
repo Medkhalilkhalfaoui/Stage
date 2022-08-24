@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:intl/intl.dart';
+
 import 'package:prise/Screens/Success.dart';
 import 'package:prise/widgets/Switch.dart';
 import 'package:prise/widgets/Time.dart';
 import 'package:prise/widgets/Uploadfile.dart';
+import 'package:syncfusion_flutter_calendar/calendar.dart';
 
 import '../Controller/varcontroller.dart';
 import '../main.dart';
@@ -14,6 +15,8 @@ import '../widgets/Dropdown.dart';
 import '../widgets/GroupRadiobutton.dart';
 import '../widgets/InputField.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+
+import '../widgets/newcalendar.dart';
 //import 'package:shared_preferences/shared_preferences.dart';
 
 final Controller c = Get.put(Controller());
@@ -32,18 +35,25 @@ class _HomePageState extends State<HomePage> {
     TextEditingController(),
     TextEditingController()
   ];
+  final CalendarController? cont = CalendarController();
+
+  List<TimeRegion> list = [];
 
   final _formkey = GlobalKey<FormState>();
+  var num = 1;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Rendez-Vous'),
+        title: Text('Step $num'),
+        actions: [
+          Image.asset("assets/teamdev-logo.png")
+        ],
         centerTitle: true,
       ),
       body: Padding(
-        padding: const EdgeInsets.all(25),
+        padding: const EdgeInsets.symmetric(vertical: 18,horizontal: 5),
         child: Obx(() => Form(
               key: _formkey,
               child: Column(
@@ -96,26 +106,15 @@ class _HomePageState extends State<HomePage> {
                                     return GroupRadio(
                                       title: c.items[index]["name"],
                                       status: c.items[index]["sites"],
-                                      selected: c.items[index]["selected"],
+                                      //selected: c.items[index]["selected"],
                                     );
                                   }
-                                case "Calendar":
+                                case "Birth":
                                   {
-                                    var l = c.items[index]["ignore"]
-                                        .map((e) => e.toString())
-                                        .toList();
-                                    return Calendar(
+
+                                    return Birth(
                                       title: c.items[index]["name"],
-                                      ignore: (DateTime dt) {
-                                        for (var i in l) {
-                                          if (i ==
-                                              DateFormat('dd-MM-yyyy')
-                                                  .format(dt)) {
-                                            return false;
-                                          }
-                                        }
-                                        return true;
-                                      },
+
                                     );
                                   }
 
@@ -134,6 +133,92 @@ class _HomePageState extends State<HomePage> {
                                   {
                                     return SelectCountryCity();
                                   }
+                                case "c":
+                                  {
+                                    DateTime temp = DateTime.now();
+                                    var data = c.items[index]["ignore"];
+                                    var cc = [];
+                                    for (var k in data) {
+                                      cc.add(k.toString());
+                                    }
+                                    List<String> strs =
+                                        cc.map((e) => e.toString()).toList();
+
+                                    for (var j in strs) {
+                                      var x = j.toString().split("-");
+                                      DateTime t = DateTime(
+                                          int.parse(x[2]),
+                                          int.parse(x[1]),
+                                          int.parse(x[0]),
+                                          int.parse(x[3]));
+                                      list.add(TimeRegion(
+                                        startTime: t,
+                                        endTime: t.add(Duration(
+                                            minutes: int.parse(
+                                                c.items[index]["Slot"]))),
+                                        iconData: Icons.block,
+                                        color: Colors.black38,
+                                        enablePointerInteraction: false,
+                                        textStyle: const TextStyle(
+                                            color: Colors.blueAccent,
+                                            fontSize: 15),
+                                      ));
+                                    }
+
+                                    //   List<List<String>> matrice =  List<List<String>>.from(c.items[index]["ignore"]) as List<List<String>> ;
+                                    //   for(var i in matrice){
+                                    //    // List<String> strs = i.map((e) => e.toString()).toList();
+                                    //     for(var j in i){
+                                    //       var x = j.toString().split("-");
+                                    //       DateTime t = DateTime(int.parse(x[0]),int.parse(x[1]),int.parse(x[2]),int.parse(x[3]));
+                                    //       list.add(TimeRegion(startTime: t, endTime: t.add(const Duration(hours: 1)),iconData: Icons.block,color: Colors.black38));
+                                    //     }
+                                    // }
+
+                                    return Obx(() => Calandernew(
+                                          controller: cont,
+                                          times: [
+                                            ...list,
+                                            TimeRegion(
+                                              startTime: DateTime(
+                                                  temp.year,
+                                                  temp.month,
+                                                  temp.day,
+                                                  temp.hour,
+                                                  temp.minute > 30 ? 30 : 0,
+                                                  0,
+                                                  0),
+                                              endTime: DateTime(
+                                                  temp.year,
+                                                  temp.month,
+                                                  temp.day,
+                                                  temp.hour,
+                                                  temp.minute > 30 ? 60 : 30,
+                                                  0,
+                                                  0,
+                                                  0),
+                                              iconData: Icons.block,
+                                              color: Colors.black38,
+                                              enablePointerInteraction: false,
+                                              textStyle: const TextStyle(
+                                                  color: Colors.blueAccent,
+                                                  fontSize: 15),
+                                            )
+                                          ],
+                                          slot:
+                                              int.parse(c.items[index]["Slot"]),
+                                        ));
+                                    // [
+                                    //   TimeRegion(
+                                    //     startTime: DateTime(2022,8,23,12),
+                                    //     endTime: DateTime(2022,8,23,12).add(const Duration(hours: 1)),
+                                    //     enablePointerInteraction: false,
+                                    //     textStyle: TextStyle(color: Colors.red, fontSize: 15),
+                                    //     color: Colors.black38,
+                                    //     iconData: Icons.block)
+                                    // ]
+
+                                  }
                                 default:
                                   {
                                     return Container(
@@ -151,6 +236,7 @@ class _HomePageState extends State<HomePage> {
                                                         if (c.indexdata.value >
                                                             0) {
                                                           c.indexdata.value--;
+                                                          num--;
                                                           readJson();
                                                           print(c
                                                               .indexdata.value);
@@ -183,6 +269,7 @@ class _HomePageState extends State<HomePage> {
                                                                 .currentState!
                                                                 .validate())) {
                                                           c.indexdata.value++;
+                                                          num++;
 
                                                           readJson();
                                                           print(c
@@ -194,6 +281,10 @@ class _HomePageState extends State<HomePage> {
                                                           controllers.map(
                                                               (e) => e.clear());
                                                           print('success');
+                                                          print(cont
+                                                              ?.selectedDate);
+                                                          print(c.SelectedRadio);
+
                                                         }
                                                       });
 

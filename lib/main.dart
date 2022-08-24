@@ -9,6 +9,7 @@ import 'package:get/get.dart';
 import 'Controller/varcontroller.dart';
 import 'Screens/HomePage.dart';
 
+
 void main() async {
   runApp(const MyApp());
   await readJson();
@@ -18,7 +19,7 @@ void main() async {
 final Controller c = Get.put(Controller());
 
 Future<void> readJson() async {
-  final String response = await rootBundle.loadString('assets/data.json');
+  final String response = await rootBundle.loadString('assets/doctor.json');
   final data = await json.decode(response);
 
   c.items.value = data[c.indexdata.value.toString()];
@@ -35,11 +36,11 @@ class MyApp extends StatelessWidget {
       // Hide the debug banner
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.grey,
+        primarySwatch: Colors.cyan,
         primaryColor: Colors.grey,
       ),
 
-      home: HomePage(),
+      home:const  HomePage(),
     );
   }
 }

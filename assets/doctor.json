@@ -1,0 +1,76 @@
+{
+  "0" :[
+
+    {
+      "type": "edittext",
+      "name": "Last Name",
+      "required": "yes",
+      "id": "0"
+    },
+    {
+      "type": "edittext",
+      "name": "First Name",
+      "required": "yes",
+      "id": "1"
+
+    },
+    {
+      "type": "edittext",
+      "name": "Phone",
+      "required": "yes",
+      "formater": "digitsonly",
+      "valid": "Phone",
+      "keybord": "number",
+      "id": "2"
+    },
+    {
+      "type": "edittext",
+      "name": "Email",
+      "valid": "Email",
+      "keybord": "Email",
+      "id": "3"
+    },
+
+
+    {
+      "type": ""
+    }
+  ],
+  "1": [
+
+    {
+      "type": "Birth",
+      "name": "Date of Birth"
+
+    },
+    {
+      "type": "GroupRadio",
+      "name": "is your first appointment with us ?",
+      "sites": [
+        "Yes",
+        "No"
+      ],
+      "selected": "Yes"
+    },
+
+    {
+      "type": ""
+    }
+
+  ],
+  "2":  [
+    {
+      "type": "c",
+      "Slot": "30",
+      "ignore": [
+        "22-08-2022-12","22-08-2022-16","22-08-2022-18", "22-08-2022-23",
+        "23-08-2022-8","23-08-2022-10","23-08-2022-11", "23-08-2022-23",
+        "24-08-2022-9","24-08-2022-12","24-08-2022-9", "24-08-2022-22",
+        "25-08-2022-12","25-08-2022-14","25-08-2022-18", "25-08-2022-23"
+      ]
+    },
+    {
+      "type": ""
+    }
+  ]
+}
